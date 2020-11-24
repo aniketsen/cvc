@@ -221,9 +221,9 @@ loop_ti_prop <- function(loop,prop) {
   return(seq_source)
 }
 
-#compare read and calculated values of sequential source
+#compares read and calculated values of sequential source // outputs values at points of inequality
+#for side by side comparison
 compare <- function(seq_source,seq_done) {
-  flag <- c()
   ind <- 0
   for ( i in 1:12 ) {
     for ( x in 1:vol ) {
@@ -232,10 +232,9 @@ compare <- function(seq_source,seq_done) {
         t2 <- signif(seq_done[i,x,j], digits = 6 )
         if ( t1 != t2) {
           ind <- ind+1
-          flag <- c(flag,c(ind,t1,t2))
+          print(c(ind,t1,t2))
         }
       }
     }
   }
-  return(flag)
 }

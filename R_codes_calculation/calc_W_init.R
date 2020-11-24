@@ -129,9 +129,9 @@ seq_W <- function(prop,id) {
   return(seq_source)
 }
 
-#compare read and calculated values of sequential source
+#compares read and calculated values of sequential source // outputs values at points of inequality
+#for side by side comparison
 compare <- function(seq_source,seq_done) {
-  flag <- c()
   ind <- 0
   for ( i in 1:12 ) {
     for ( x in 1:vol ) {
@@ -145,7 +145,6 @@ compare <- function(seq_source,seq_done) {
       }
     }
   }
-  return(flag)
 }
 
 compareabs <- function(seq_source,seq_done) {
