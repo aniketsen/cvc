@@ -1291,8 +1291,20 @@ int prepare_sequential_fht_twinpeak_source ( double ** const seq_source, double 
   unsigned int const VOL3 = LX * LY * LZ;
 
   double * scalar_field = init_1level_dtable ( VOLUME );
+  
+  FILE * scFile;
+  char file_name[100];
 
   ranbinaryd ( scalar_field, VOLUME );
+  
+  /* write stochastic noise field */
+  sprintf(file_name,"scalar_field_%d.txt",gamma_id);
+  
+  scFile = fopen(file_name,"w");
+  for (unsigned int ix=0; ix<VOLUME; ix++) {
+     fprintf(scFile,"%f\n",scalar_field[ix]);
+  }
+  fclose(scFile);
 
   for ( int isc = 0; isc < 12; isc++ ) {
 #ifdef HAVE_OPENMP

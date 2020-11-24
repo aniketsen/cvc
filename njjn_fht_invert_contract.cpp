@@ -632,6 +632,18 @@ int main(int argc, char **argv) {
 
 #endif  /* end of if HAVE_MPI not defined */
   }  /* end of if on read stoch. source  */
+  
+  /* Write loop to disk */
+  FILE * pFile;
+  pFile = fopen("loop.txt","w");
+  for (unsigned int ix=0;  ix<VOLUME; ix++) {
+     for (int i=0; i<12; i++) {
+        for (int k=0; k<12; k++) {
+           fprintf(pFile,"%25.16e\n%25.16e\n",creal(loop[ix][i][k]),cimag(loop[ix][i][k]));
+        }
+     }
+  }
+  fclose(pFile);
 
   /***************************************************************************
    *
